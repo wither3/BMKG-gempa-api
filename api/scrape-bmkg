@@ -2,6 +2,16 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 export default async function handler(req, res) {
+    // Menambahkan header CORS
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Mengizinkan semua origin
+    res.setHeader('Access-Control-Allow-Methods', 'GET'); // Mengizinkan metode GET
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Mengizinkan header tertentu
+
+    // Jika permintaan adalah OPTIONS, kirimkan respons 200
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+
     const url = 'https://www.bmkg.go.id/'; // Ganti dengan URL yang sesuai
     try {
         // Mengambil data dari halaman web
