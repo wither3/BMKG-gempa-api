@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/bmkg-gempa.js",
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/bmkg-gempa.js"
+      "dest": "/index.js"
     }
   ]
 }
