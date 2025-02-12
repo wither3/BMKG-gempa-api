@@ -29,6 +29,5 @@ app.get('/api/ytmp3', async (req, res) => {
 });
 
 // Menjalankan server
-app.listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
-});
+module.exports = app;
+
