@@ -4,6 +4,17 @@ const { ytmp3a } = require('./api/ytmp3');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const FIREBASE_URL = "https://tempatrahasia-201bd-default-rtdb.asia-southeast1.firebasedatabase.app/data.json";
+
+// Route untuk mengambil data dari Firebase
+app.get("/cek/dataku", async (req, res) => {
+  try {
+    const response = await axios.get(FIREBASE_URL);
+    res.status(200).json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: "Gagal mengambil data JSON" });
+  }
+});
 // Endpoint API untuk YouTube to MP3
 app.get('/api/ytmp3', async (req, res) => {
     try {
