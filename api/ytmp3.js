@@ -56,7 +56,13 @@ async function cariYT(text) {
         const r = await yts(text);
         if (!r.all.length) throw new Error('Video tidak ditemukan');
 
-        return r.all[0];
+        // Cari elemen pertama yang valid
+        for (let i = 0; i < r.all.length; i++) {
+            if (r.all[i]) return r.all[i]; // Mengembalikan elemen pertama yang ditemukan
+        }
+
+        throw new Error('Tidak ada video yang valid');
+
     } catch (error) {
         throw new Error(`cariYT Error: ${error.message}`);
     }
